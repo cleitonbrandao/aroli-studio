@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\Employee\HomeEmployee;
+use App\Livewire\Employee\IndexEmployee;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::middleware([
     'auth:sanctum',
@@ -25,4 +25,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::controller(HomeEmployee::class)->group(function () {
+        Route::get('/employee', 'home')->name('employee');
+        Route::get(IndexEmployee::class)->name('employee/index');
+
+    });
 });
