@@ -2,27 +2,30 @@
 @section('content')
     <x-validation-errors class="mb-4" />
 
-    <div class="w-1/2">
-        <form method="POST" action="{{ route('register') }}">
+        <form class="flex flex-wrap w-11/12 p-2 justify-evenly" method="POST" action="{{ route('register') }}">
             @csrf
-
-            <div>
+            <div class="w-2/5 p-2">
                 <x-label for="name" value="{{ __('Nome') }}" />
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required/>
             </div>
 
-            <div class="mt-4">
-                <x-label for="email" value="{{ __('Sobre Nome') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            <div class="w-2/5 p-2">
+                <x-label for="last_name" value="{{ __('Sobre Nome') }}" />
+                <x-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required/>
             </div>
 
-            <div class="mt-4">
+            <div class="w-2/5 p-2">
                 <x-label for="cpf" value="{{ __('CPF') }}" />
-                <x-input id="cpf" class="block mt-1 w-full" type="number" name="number" required autocomplete="number" />
+                <x-input id="cpf" class="block mt-1 w-full" type="text" name="cpf" autocomplete="cpf" />
+            </div>
+
+            <div class="w-2/5 p-2">
+                <x-label for="birthday" value="{{ __('Aniversário') }}" />
+                <x-input id="birthday" class="block mt-1 w-full" type="date" name="birthday" autocomplete="birthday" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
+                <div class="w-2/5 p-2">
                     <x-label for="terms">
                         <div class="flex items-center">
                             <x-checkbox name="terms" id="terms" required />
@@ -38,16 +41,14 @@
                 </div>
             @endif
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
+            <div class="flex items-center justify-center w-full p-2">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    {{ __('Termos de Cadastro') }}
                 </a>
 
                 <x-button class="ms-4">
-                    {{ __('Register') }}
+                    {{ __('Cadastro') }}
                 </x-button>
             </div>
         </form>
-    </div>
-
 @endsection
