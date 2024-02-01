@@ -2,6 +2,7 @@
 
 use App\Livewire\Employee\HomeEmployee;
 use App\Livewire\Employee\IndexEmployee;
+use App\Livewire\Employee\RegisterEmployee;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,9 +27,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::controller(HomeEmployee::class)->group(function () {
-        Route::get('/employee', 'home')->name('employee');
-        Route::get(IndexEmployee::class)->name('employee/index');
-
+    Route::name('root.')->prefix('employee')->group(function () {
+        Route::get('/', [HomeEmployee::class, 'home'])->name('employee');
+        Route::get('/index', [IndexEmployee::class, 'index'])->name('employee.index');
+        Route::get('/register', [RegisterEmployee::class, 'register'])->name('employee.register');
     });
 });

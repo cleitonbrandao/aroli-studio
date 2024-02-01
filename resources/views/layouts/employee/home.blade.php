@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout >
     <x-slot name="header">
         <div class="flex flex-row">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -6,10 +6,10 @@
             </h2>
             <!-- Navigation Links -->
             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                <x-nav-link class="text-xs" href="{{ route('employee/index', 'index') }}" :active="request()->routeIs('index')">
+                <x-nav-link class="text-xs" href="{{ route('root.employee.index') }}" :active="request()->routeIs('root.employee.index')">
                     {{ __('Lista') }}
                 </x-nav-link>
-                <x-nav-link class="text-xs" href="#" :active="request()->routeIs('register')">
+                <x-nav-link class="text-xs" href="{{ route('root.employee.register') }}" :active="request()->routeIs('root.employee.register')">
                     {{ __('Cadastrar') }}
                 </x-nav-link>
             </div>
@@ -17,7 +17,7 @@
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="flex justify-between">
+            <div class="flex justify-center">
                 <div class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4">
                     <label for="table-search" class="sr-only">Search</label>
                     <div class="relative">
@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-
+            @yield('content')
         </div>
     </div>
 </x-app-layout>

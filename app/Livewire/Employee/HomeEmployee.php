@@ -10,4 +10,5 @@ class HomeEmployee extends Component
     {
         return view('layouts.employee.home');
     }
+
 }
