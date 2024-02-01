@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\Dashboard\HomeDashBoard;
+use App\Livewire\Dashboard\IndexDashBoard;
 use App\Livewire\Employee\HomeEmployee;
 use App\Livewire\Employee\IndexEmployee;
 use App\Livewire\Employee\RegisterEmployee;
@@ -23,9 +25,10 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::name('root.')->prefix('dashboard')->group(function () {
+      Route::get('/', [HomeDashBoard::class, 'home'])->name('dashboard.home');
+      Route::get('/index', [IndexDashBoard::class, 'index'])->name('dashboard.index');
+    });
 
     Route::name('root.')->prefix('employee')->group(function () {
         Route::get('/', [HomeEmployee::class, 'home'])->name('employee');
