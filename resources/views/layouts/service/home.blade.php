@@ -5,7 +5,7 @@
                 {{ __('Serviços') }}
             </h2>
             <!-- Navigation Links -->
-            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+            <div class="space-x-8 sm:-my-px sm:ms-10 sm:flex">
                 <x-nav-link class="text-xs" href="{{ route('root.service.index') }}" :active="request()->routeIs('root.service.index')">
                     {{ __('Lista') }}
                 </x-nav-link>
