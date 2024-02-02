@@ -1,11 +1,18 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Livewire\Dashboard\HomeDashBoard;
 use App\Livewire\Dashboard\IndexDashBoard;
+
 use App\Livewire\Employee\HomeEmployee;
 use App\Livewire\Employee\IndexEmployee;
 use App\Livewire\Employee\RegisterEmployee;
-use Illuminate\Support\Facades\Route;
+
+use App\Livewire\Service\IndexService;
+use App\Livewire\Service\HomeService;
+use App\Livewire\Service\RegisterService;
+use App\Livewire\Service\RegisterProduct;
+use App\Livewire\Service\RegisterPackage;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +40,18 @@ Route::middleware([
     Route::name('root.')->prefix('employee')->group(function () {
         Route::get('/', [HomeEmployee::class, 'home'])->name('employee');
         Route::get('/index', [IndexEmployee::class, 'index'])->name('employee.index');
-        Route::get('/register', [RegisterEmployee::class, 'register'])->name('employee.register');
     });
+
+    Route::name('root.')->prefix('service')->group(function () {
+        Route::get('/', [HomeService::class, 'home'])->name('service');
+        Route::get('/index', [IndexService::class, 'index'])->name('service.index');
+    });
+
+    Route::name('root.')->prefix('register')->group(function () {
+        Route::get('/employee', [RegisterEmployee::class, 'register'])->name('register.employee');
+        Route::get('/service', [RegisterService::class, 'register'])->name('register.service');
+        Route::get('/product', [RegisterProduct::class, 'register'])->name('register.product');
+        Route::get('/package', [RegisterPackage::class, 'register'])->name('register.package');
+    });
+
 });

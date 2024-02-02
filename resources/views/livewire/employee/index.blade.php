@@ -1,6 +1,6 @@
 @extends('layouts.employee.home')
 @section('content')
-    <div  wire:transition>
+    <div>
         <div class="flex justify-center">
             <div class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4">
                 <label for="table-search" class="sr-only">Search</label>

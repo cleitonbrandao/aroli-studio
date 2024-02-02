@@ -9,7 +9,7 @@
                 <x-nav-link class="text-xs" href="{{ route('root.employee.index') }}" :active="request()->routeIs('root.employee.index')">
                     {{ __('Lista') }}
                 </x-nav-link>
-                <x-nav-link class="text-xs" href="{{ route('root.employee.register') }}" :active="request()->routeIs('root.employee.register')">
+                <x-nav-link class="text-xs" href="{{ route('root.register.employee') }}" :active="request()->routeIs('root.employee.register')">
                     {{ __('Cadastrar') }}
                 </x-nav-link>
             </div>

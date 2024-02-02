@@ -18,6 +18,9 @@
                     <x-nav-link href="{{ route('root.employee') }}" :active="request()->routeIs('root.employee')">
                         {{ __('Clientes') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('root.service') }}" :active="request()->routeIs('root.service')">
+                        {{ __('Serviços') }}
+                    </x-nav-link>
                 </div>
             </div>
 
