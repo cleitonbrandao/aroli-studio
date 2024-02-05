@@ -35,9 +35,7 @@
 
             <!-- Page Content -->
             <main>
-                <div  class="w-full min-w-[880px]">
-                    {{ $slot }}
-                </div>
+                {{ $slot }}
             </main>
         </div>
 

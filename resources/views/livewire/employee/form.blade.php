@@ -2,29 +2,34 @@
 @section('content')
     <x-validation-errors class="mb-4" />
 
-    <form class="flex flex-wrap w-11/12 p-2 justify-evenly" method="POST" action="{{ route('register') }}">
-            @csrf
-            <div class="w-2/5 p-2">
+    <form class="flex flex-wrap w-full md:w-1/2 p-2 justify-evenly" method="POST" action="{{ route('register') }}">
+        @csrf
+{{--        NOME E SOBRE NOME--}}
+        <div class="flex flex-col sm:flex-row flex-wrap justify-center w-full">
+            <div class="w-full sm:w-1/2 p-2">
                 <x-label for="name" value="{{ __('Nome') }}" />
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required/>
             </div>
 
-            <div class="w-2/5 p-2">
+            <div class="w-full sm:w-1/2 p-2">
                 <x-label for="last_name" value="{{ __('Sobre Nome') }}" />
                 <x-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required/>
             </div>
-
-            <div class="w-2/5 p-2">
+        </div>
+{{--        CPF E DATA DE NASCIMENTO--}}
+        <div class="flex flex-col sm:flex-row flex-wrap items-center justify-evenly w-full">
+            <div class="w-full sm:w-1/2 p-2">
                 <x-label for="cpf" value="{{ __('CPF') }}" />
                 <x-input id="cpf" class="block mt-1 w-full" type="text" name="cpf" autocomplete="cpf" />
             </div>
-
-            <div class="flex flex-col justify-start w-2/5 p-2">
+            <div class="w-full sm:w-1/2 p-2">
                 <x-label>Data de Nasciemnto</x-label>
                 <x-datepicker name="birthday" />
             </div>
-
-            <div class="w-2/5 p-2">
+        </div>
+{{--        CONTATO E-MAIL--}}
+        <div class="flex flex-col sm:flex-row flex-wrap justify-center w-full">
+            <div class="w-full sm:w-1/2 p-2">
                 <label for="phone-input" class="block mb-2 text-sm font-medium text-gray-900 light:text-white">Contato:</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
@@ -36,7 +41,7 @@
                 </div>
             </div>
 
-            <div class="w-2/5 p-2">
+            <div class="w-full sm:w-1/2 p-2">
                 <label for="input-group-1" class="block mb-2 text-sm font-medium text-gray-900 light:text-white">E-mail</label>
                 <div class="relative mb-6">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
@@ -48,42 +53,42 @@
                     <input type="text" id="input-group-1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500" placeholder="exemplo@email.com">
                 </div>
             </div>
+        </div>
+{{--        FOTO--}}
+        <div class="w-full p-2">
+            <label class="block mb-2 text-sm font-medium text-gray-900 light:text-white" for="file_input">Foto "Opicional"</label>
+            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 light:text-gray-400 focus:outline-none light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file">
+            <p class="mt-1 text-sm text-gray-500 light:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
 
-            <div class="w-2/3 p-2">
-                <label class="block mb-2 text-sm font-medium text-gray-900 light:text-white" for="file_input">Foto "Opicional"</label>
-                <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 light:text-gray-400 focus:outline-none light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file">
-                <p class="mt-1 text-sm text-gray-500 light:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+        </div>
 
-            </div>
+        @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
+            <div class="w-2/5 p-2">
+                <x-label for="terms">
+                    <div class="flex items-center">
+                        <x-checkbox name="terms" id="terms" required />
 
-
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="w-2/5 p-2">
-                    <x-label for="terms">
-                        <div class="flex items-center">
-                            <x-checkbox name="terms" id="terms" required />
-
-                            <div class="ms-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">'.__('Privacy Policy').'</a>',
-                                ]) !!}
-                            </div>
+                        <div class="ms-2">
+                            {!! __('I agree to the :terms_of_service and :privacy_policy', [
+                                    'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">'.__('Terms of Service').'</a>',
+                                    'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">'.__('Privacy Policy').'</a>',
+                            ]) !!}
                         </div>
-                    </x-label>
-                </div>
-            @endif
-
-            <div class="flex items-center justify-center w-full p-2">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer" x-data x-on:click="$dispatch('open-modal', {name:'terms'})">
-                    {{ __('Termos de Cadastro') }}
-                </a>
-
-                <x-button class="ms-4">
-                    {{ __('Cadastro') }}
-                </x-button>
+                    </div>
+                </x-label>
             </div>
-        </form>
+        @endif
+
+        <div class="flex flex-col sm:flex-row items-center justify-center w-full p-2">
+            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer" x-data x-on:click="$dispatch('open-modal', {name:'terms'})">
+                {{ __('Termos de Cadastro') }}
+            </a>
+
+            <x-button class="ms-4">
+                {{ __('Cadastro') }}
+            </x-button>
+        </div>
+    </form>
     <x-modal-info title="{{__('Termos do Cadastro')}}" name="terms">
         <x-slot name="body">
             With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.

@@ -14,6 +14,10 @@ use App\Livewire\Service\RegisterService;
 use App\Livewire\Service\RegisterProduct;
 use App\Livewire\Service\RegisterPackage;
 
+use App\Livewire\Commercial\HomeCommercial;
+use App\Livewire\Commercial\SummaryCommercial;
+use App\Livewire\Commercial\Consumption;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,11 +51,16 @@ Route::middleware([
         Route::get('/index', [IndexService::class, 'index'])->name('service.index');
     });
 
-    Route::name('root.')->prefix('register')->group(function () {
-        Route::get('/employee', [RegisterEmployee::class, 'register'])->name('register.employee');
-        Route::get('/service', [RegisterService::class, 'register'])->name('register.service');
-        Route::get('/product', [RegisterProduct::class, 'register'])->name('register.product');
-        Route::get('/package', [RegisterPackage::class, 'register'])->name('register.package');
+    Route::name('root.')->prefix('form')->group(function () {
+        Route::get('/employee', [RegisterEmployee::class, 'form'])->name('form.employee');
+        Route::get('/service', [RegisterService::class, 'form'])->name('form.service');
+        Route::get('/product', [RegisterProduct::class, 'form'])->name('form.product');
+        Route::get('/package', [RegisterPackage::class, 'form'])->name('form.package');
     });
 
+    Route::name('root.')->prefix('commercial')->group(function () {
+        Route::get('/', [HomeCommercial::class, 'home'])->name('commercial');
+        Route::get('/summary', [SummaryCommercial::class, 'summary'])->name('commercial.summary');
+        Route::get('/consumption', [Consumption::class, 'home'])->name('commercial.consumption');
+    });
 });

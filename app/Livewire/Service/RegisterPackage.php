@@ -6,8 +6,8 @@ use Livewire\Component;
 
 class RegisterPackage extends Component
 {
-    public function register()
+    public function form()
     {
-        return view('livewire.service.register-package');
+        return view('livewire.service.form-package');
     }
 }

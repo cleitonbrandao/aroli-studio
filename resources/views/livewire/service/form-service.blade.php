@@ -1,8 +1,9 @@
 @extends('layouts.service.home')
 @section('content')
-    <form class="flex flex-col items-center justify-center w-full w-11/12 p-2" method="POST" action="{{ route('register') }}">
+    <form class="flex flex-col items-center justify-center w-full p-2" method="POST" action="{{ route('register') }}">
         @csrf
-        <div class="flex flex-row items-end w-2/5">
+{{--        NOME E TEMPO--}}
+        <div class="flex flex-row flex-wrap items-end w-full  md:w-2/5">
             <div class="w-3/5 p-2">
                 <x-label for="name" value="{{ __('Nome') }}" />
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required/>
@@ -18,7 +19,8 @@
                 </select>
             </div>
         </div>
-        <div class="flex flex-row items-end w-2/5">
+{{--        PREÇO E PREÇO DE CUSTO--}}
+        <div class="flex flex-row items-end w-full md:w-2/5">
             <div class="w-full p-2">
                 <x-label for="price" value="{{ __('Preço') }}" />
                 <div class="relative w-full">
@@ -43,12 +45,12 @@
                 </div>
             </div>
         </div>
-
-            <div class="w-2/5 p-2">
+{{--        DETALHES--}}
+        <div class="w-full md:w-2/5 p-2">
                 <label for="describe" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Detalhes</label>
                 <textarea id="describe" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descrição do Serviço..."></textarea>
             </div>
-
+{{--        BOTÃO--}}
         <div class="flex items-center justify-center w-full p-2">
             <x-button class="ms-4">
                 {{ __('Cadastrar') }}

@@ -6,8 +6,8 @@ use Livewire\Component;
 
 class RegisterEmployee extends Component
 {
-    public function register()
+    public function form()
     {
-        return view('livewire.employee.register');
+        return view('livewire.employee.form');
     }
 }

@@ -9,21 +9,19 @@
                 <x-nav-link class="text-xs" href="{{ route('root.service.index') }}" :active="request()->routeIs('root.service.index')">
                     {{ __('Lista') }}
                 </x-nav-link>
-                <x-nav-link class="text-xs" href="{{ route('root.register.product') }}" :active="request()->routeIs('root.register.product')">
+                <x-nav-link class="text-xs" href="{{ route('root.form.product') }}" :active="request()->routeIs('root.form.product')">
                     {{ __('Cadastrar - Produtos') }}
                 </x-nav-link>
-                <x-nav-link class="text-xs" href="{{ route('root.register.service') }}" :active="request()->routeIs('root.register.service')">
+                <x-nav-link class="text-xs" href="{{ route('root.form.service') }}" :active="request()->routeIs('root.form.service')">
                     {{ __('Cadastrar - Serviços') }}
                 </x-nav-link>
-                <x-nav-link class="text-xs" href="{{ route('root.register.package') }}" :active="request()->routeIs('root.register.package')">
+                <x-nav-link class="text-xs" href="{{ route('root.form.package') }}" :active="request()->routeIs('root.form.package')">
                     {{ __('Cadastrar - Pacotes') }}
                 </x-nav-link>
             </div>
         </div>
     </x-slot>
-    <div class="py-12">
-        <div class="flex max-w-7xl mx-auto sm:px-6 lg:px-8 justify-center">
-            @yield('content')
-        </div>
+    <div class="p-4 lg:px-8 justify-center">
+        @yield('content')
     </div>
 </x-app-layout>
