@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CostumerController;
+
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Dashboard\HomeDashBoard;
 use App\Livewire\Dashboard\IndexDashBoard;
@@ -17,6 +19,10 @@ use App\Livewire\Service\RegisterPackage;
 use App\Livewire\Commercial\HomeCommercial;
 use App\Livewire\Commercial\SummaryCommercial;
 use App\Livewire\Commercial\Consumption;
+
+use App\Livewire\Costumer\HomeCostumer;
+use App\Livewire\Costumer\IndexCostumer;
+use App\Livewire\Costumer\RegisterCostumer;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +52,11 @@ Route::middleware([
         Route::get('/index', [IndexEmployee::class, 'index'])->name('employee.index');
     });
 
+    Route::name('root.')->prefix('costumer')->group(function (){
+        Route::get('/', [HomeCostumer::class, 'home'])->name('costumer');
+        Route::get('/index', [IndexCostumer::class, 'index'])->name('costumer.index');
+    });
+
     Route::name('root.')->prefix('service')->group(function () {
         Route::get('/', [HomeService::class, 'home'])->name('service');
         Route::get('/index', [IndexService::class, 'index'])->name('service.index');
@@ -53,6 +64,7 @@ Route::middleware([
 
     Route::name('root.')->prefix('form')->group(function () {
         Route::get('/employee', [RegisterEmployee::class, 'form'])->name('form.employee');
+        Route::get('/costumer', [RegisterCostumer::class, 'form'])->name('form.costumer');
         Route::get('/service', [RegisterService::class, 'form'])->name('form.service');
         Route::get('/product', [RegisterProduct::class, 'form'])->name('form.product');
         Route::get('/package', [RegisterPackage::class, 'form'])->name('form.package');
@@ -62,5 +74,9 @@ Route::middleware([
         Route::get('/', [HomeCommercial::class, 'home'])->name('commercial');
         Route::get('/summary', [SummaryCommercial::class, 'summary'])->name('commercial.summary');
         Route::get('/consumption', [Consumption::class, 'home'])->name('commercial.consumption');
+    });
+
+    Route::name('root.')->prefix('register')->group(function () {
+        Route::post('/costumer', [CostumerController::class, 'register'])->name('register.costumer');
     });
 });

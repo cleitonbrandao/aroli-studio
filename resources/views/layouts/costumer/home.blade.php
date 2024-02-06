@@ -2,14 +2,14 @@
     <x-slot name="header">
         <div class="flex flex-row">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Funcionários') }}
+                {{ __('Clinetes') }}
             </h2>
             <!-- Navigation Links -->
             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                <x-nav-link class="text-xs" href="{{ route('root.employee.index') }}" :active="request()->routeIs('root.employee.index')">
+                <x-nav-link class="text-xs" href="{{ route('root.costumer.index') }}" :active="request()->routeIs('root.costumer.index')">
                     {{ __('Lista') }}
                 </x-nav-link>
-                <x-nav-link class="text-xs" href="{{ route('root.form.employee') }}" :active="request()->routeIs('root.form.employee')">
+                <x-nav-link class="text-xs" href="{{ route('root.form.costumer') }}" :active="request()->routeIs('root.form.costumer')">
                     {{ __('Cadastrar') }}
                 </x-nav-link>
             </div>

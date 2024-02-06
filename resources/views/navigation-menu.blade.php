@@ -16,6 +16,9 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('root.employee') }}" :active="request()->routeIs('root.employee')">
+                        {{ __('Funcionários') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('root.costumer') }}" :active="request()->routeIs('root.costumer')">
                         {{ __('Clientes') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('root.service') }}" :active="request()->routeIs('root.service')">
