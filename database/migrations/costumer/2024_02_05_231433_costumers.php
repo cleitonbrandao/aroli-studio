@@ -19,15 +19,14 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->bigInteger('cpf');
+            $table->date('birthday')->nullable();
             $table->string('email')->nullable();
             $table->timestamps();
 
             $table->unique(['person_id', 'cpf']);
         });
         DB::statement(
-            'ALTER TABLE costumers ADD nItemPed INT(6) UNSIGNED ZEROFILL DEFAULT NULL' .
-            ' COMMENT "Número do Pedido de Compra\r\nInformação de interesse do emissor para controle do B2B. (v2.0)"' .
-            ' AFTER cpf'
+            'ALTER TABLE costumers MODIFY COLUMN cpf BIGINT(11) UNSIGNED ZEROFILL NOT NULL AFTER person_id'
         );
     }
 

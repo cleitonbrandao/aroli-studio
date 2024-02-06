@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class CostumerController extends Controller
 {
-    public function register(Request $request)
+    public function store(Request $request)
     {
-        dd($request);
+
     }
 }

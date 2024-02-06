@@ -77,6 +77,6 @@ Route::middleware([
     });
 
     Route::name('root.')->prefix('register')->group(function () {
-        Route::post('/costumer', [CostumerController::class, 'register'])->name('register.costumer');
+        Route::post('/costumer', [CostumerController::class, 'store'])->name('register.costumer');
     });
 });
