@@ -80,3 +80,9 @@ Route::middleware([
         Route::post('/costumer', [CostumerController::class, 'store'])->name('register.costumer');
     });
 });
+
+Route::fallback(function () {
+    if(!auth()->check()) {
+        return view('auth.login');
+    }
+});
