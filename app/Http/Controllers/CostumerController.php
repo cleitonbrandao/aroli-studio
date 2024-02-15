@@ -2,12 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Costumer;
+use App\Http\Requests\StoreCostumerRequest;
 
 class CostumerController extends Controller
 {
-    public function store(Request $request)
-    {
+    protected int $costumer_people_id;
+    protected string $birthday;
+    protected string $email;
+    protected int $cpf;
 
+
+    public function store(StoreCostumerRequest $request)
+    {
+        Costumer::created([
+            'cotumer_people_id' => $this->costumer_people_id,
+            'birthday' => $this->birthday,
+            'email' => $this->email,
+            'cpf' => $this->cpf,
+        ]);
     }
 }
