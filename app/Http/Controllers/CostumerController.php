@@ -15,6 +15,11 @@ class CostumerController extends Controller
 
     public function store(StoreCostumerRequest $request)
     {
+        $validated = $request->validated();
+        if($validated->fails())
+        {
+            return $validated->erros();
+        }
         Costumer::created([
             'cotumer_people_id' => $this->costumer_people_id,
             'birthday' => $this->birthday,

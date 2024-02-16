@@ -2,6 +2,14 @@
 @section('content')
     <form class="flex flex-wrap w-full md:w-1/2 p-2 justify-evenly" method="POST" action="{{ route('root.register.costumer') }}">
         @csrf
+        @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <span class="font-medium">Erro!</span>
+                    {{ $error }}
+                </div>
+            @endforeach
+        @endif
         {{--        NOME E SOBRE NOME--}}
         <div class="flex flex-col sm:flex-row flex-wrap justify-center w-full">
             <div class="w-full sm:w-1/2 p-2">
@@ -18,7 +26,7 @@
         <div class="flex flex-col sm:flex-row flex-wrap items-center justify-evenly w-full">
             <div class="w-full sm:w-1/2 p-2">
                 <x-label for="cpf" value="{{ __('CPF') }}" />
-                <x-input id="cpf" class="block mt-1 w-full" type="text" name="cpf" autocomplete="cpf" />
+                <x-input id="cpf" class="block mt-1 w-full" type="text" name="cpf" autocomplete="cpf" :value="old('cpf')" />
             </div>
             <div class="w-full sm:w-1/2 p-2">
                 <x-label>Data de Nasciemnto</x-label>

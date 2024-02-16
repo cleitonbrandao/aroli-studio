@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\CpfRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCostumerRequest extends FormRequest
@@ -11,7 +12,7 @@ class StoreCostumerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,9 @@ class StoreCostumerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'cpf' => ['required', 'not_regex:/^(.)\1*$/', 'digits:11',  new CpfRule],
+            'birthday' => ['nullable', 'date'],
+            'email' => ['nullable', 'email']
         ];
     }
 }
