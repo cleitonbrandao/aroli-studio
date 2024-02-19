@@ -23,9 +23,12 @@ class StoreCostumerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'cpf' => ['required', 'not_regex:/^(.)\1*$/', 'digits:11',  new CpfRule],
+            'name' => ['bail', 'required'],
+            'last_name' => ['bail', 'required'],
+            'cpf' => ['bail', 'required', 'not_regex:/^(.)\1*$/', 'digits:11',  new CpfRule],
             'birthday' => ['nullable', 'date'],
-            'email' => ['nullable', 'email']
+            'email' => ['nullable', 'email'],
+            'photo' => ['nullable', 'string']
         ];
     }
 }
