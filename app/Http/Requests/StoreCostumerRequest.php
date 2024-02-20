@@ -28,7 +28,7 @@ class StoreCostumerRequest extends FormRequest
             'person.last_name' => ['bail', 'required'],
             'person.photo' => ['nullable', 'string'],
             'costumer' => ['array'],
-            'costumer.cpf' => ['bail', 'required', 'not_regex:/^(.)\1*$/', 'digits:11',  new CpfRule],
+            'costumer.cpf' => ['bail', 'unique:App\Models\Costumer,cpf', 'nullable', 'not_regex:/^(.)\1*$/', 'digits:11',  new CpfRule],
             'costumer.birthday' => ['nullable', 'date'],
             'costumer.email' => ['nullable', 'email']
         ];
