@@ -18,7 +18,7 @@ return new class extends Migration
                 ->constrained(table: 'peoples', indexName: 'costumer_people_id')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->bigInteger('cpf');
+            $table->bigInteger('cpf')->nullable();
             $table->date('birthday')->nullable();
             $table->string('email')->nullable();
             $table->timestamps();
