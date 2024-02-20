@@ -1,5 +1,6 @@
 @extends('layouts.costumer.home')
 @section('content')
+    @dump($costumers)
     <div>
         <div class="flex justify-center">
             <div class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4">

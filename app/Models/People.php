@@ -15,6 +15,6 @@ class People extends Model
     ];
     public function costumer(): HasOne
     {
-        return $this->hasOne(Costumer::class);
+        return $this->hasOne(Costumer::class, 'person_id', 'id');
     }
 }

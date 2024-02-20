@@ -11,15 +11,9 @@ class CostumerController extends Controller
 {
     public function store(StoreCostumerRequest $request): RedirectResponse
     {
-        $people = People::create($request->safe()->only(['name', 'last_name', 'photo']));
-        $request_costumer = $request->safe()->except(['name', 'last_name', 'photo']);
-        Costumer::create(
-            [
-                'person_id' => $people->id,
-                'cpf' => $request_costumer['cpf'],
-                'birthday' => $request_costumer['birthday'],
-                'email' => $request_costumer['email']
-            ]);
+        $data = $request->validated();
+        $people = People::create($data['person']);
+        $people->costumer()->create($data['costumer']);
         return redirect('costumer/index');
     }
 }
