@@ -23,10 +23,10 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->timestamps();
 
-            $table->unique(['person_id', 'cpf']);
+            $table->unique(['person_id']);
         });
         DB::statement(
-            'ALTER TABLE costumers MODIFY COLUMN cpf BIGINT(11) UNSIGNED ZEROFILL NOT NULL AFTER person_id'
+            'ALTER TABLE costumers MODIFY COLUMN cpf BIGINT(11) UNSIGNED ZEROFILL AFTER person_id'
         );
     }
 

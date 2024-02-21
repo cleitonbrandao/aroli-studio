@@ -9,6 +9,6 @@ class IndexCostumer extends Component
 {
     public function index()
     {
-        return view('livewire.costumer.index')->with(['costumers' => Costumer::all()]);
+        return view('livewire.costumer.index')->with(['costumers' => Costumer::with('people')->get()]);
     }
 }

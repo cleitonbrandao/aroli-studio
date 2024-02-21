@@ -24,13 +24,14 @@ class StoreCostumerRequest extends FormRequest
     {
         return [
             'person' => ['array'],
-            'person.name' => ['bail', 'required'],
-            'person.last_name' => ['bail', 'required'],
+            'person.name' => ['required', 'string'],
+            'person.last_name' => ['required', 'string'],
+            'person.phone' => ['nullable', 'string'],
             'person.photo' => ['nullable', 'string'],
             'costumer' => ['array'],
-            'costumer.cpf' => ['bail', 'unique:App\Models\Costumer,cpf', 'nullable', 'not_regex:/^(.)\1*$/', 'digits:11',  new CpfRule],
+            'costumer.cpf' => ['unique:App\Models\Costumer,cpf', 'nullable', 'not_regex:/^(.)\1*$/', 'digits:11',  new CpfRule],
             'costumer.birthday' => ['nullable', 'date'],
-            'costumer.email' => ['nullable', 'email']
+            'costumer.email' => ['nullable', 'email'],
         ];
     }
 }

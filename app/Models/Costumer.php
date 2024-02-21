@@ -15,6 +15,6 @@ class Costumer extends Model
 
     public function people(): HasOne
     {
-        return $this->hasOne(People::class);
+        return $this->hasOne(People::class, 'id', 'person_id');
     }
 }

@@ -11,7 +11,7 @@ class People extends Model
     use HasFactory;
     protected $table = 'peoples';
     protected $fillable = [
-        'name', 'last_name', 'photo'
+        'name', 'last_name', 'phone', 'photo'
     ];
     public function costumer(): HasOne
     {
