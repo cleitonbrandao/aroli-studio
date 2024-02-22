@@ -79,6 +79,10 @@ Route::middleware([
     Route::name('root.')->prefix('register')->group(function () {
         Route::post('/costumer', [CostumerController::class, 'store'])->name('register.costumer');
     });
+
+    Route::name('root.')->prefix('update')->group(function () {
+        Route:update('/costumer', [CostumerController::class, 'update'])->name('update.costumer');
+    });
 });
 
 Route::fallback(function () {

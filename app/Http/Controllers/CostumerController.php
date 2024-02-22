@@ -16,4 +16,8 @@ class CostumerController extends Controller
         $people->costumer()->create($data['costumer']);
         return redirect('costumer/index');
     }
+
+    public function update() {
+        dd('update');
+    }
 }

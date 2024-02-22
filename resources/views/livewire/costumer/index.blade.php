@@ -53,7 +53,7 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4">
-                                <a href="#" class="font-medium text-blue-600 light:text-blue-500 hover:underline">Edit user</a>
+                                <a href="{{ route('') }}" class="font-medium text-blue-600 light:text-blue-500 hover:underline">Edit user</a>
                             </td>
                         </tr>
                         @endforeach
