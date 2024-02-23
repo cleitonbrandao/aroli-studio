@@ -1,5 +1,6 @@
 @extends('layouts.costumer.home')
 @section('content')
+
     <div>
         <div class="flex justify-center">
             <div class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4">
@@ -14,6 +15,7 @@
                 </div>
             </div>
         </div>
+
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 light:text-gray-400">
@@ -53,7 +55,7 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4">
-                                <a href="{{ route('') }}" class="font-medium text-blue-600 light:text-blue-500 hover:underline">Edit user</a>
+                                <a href="#" x-data x-on:click.prevent="$dispatch('open-modal', { name: 'update' })" class="font-medium text-blue-600 light:text-blue-500 hover:underline">Edit user</a>
                             </td>
                         </tr>
                         @endforeach
@@ -61,5 +63,9 @@
                     </table>
                 </div>
             </div>
+        <livewire-costumer.update name="update" title="teste" >
+            <span>TESTANDO</span>
+        </livewire-costumer.update>
+
     </div>
 @endsection

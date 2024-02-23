@@ -81,7 +81,7 @@ Route::middleware([
     });
 
     Route::name('root.')->prefix('update')->group(function () {
-        Route:update('/costumer', [CostumerController::class, 'update'])->name('update.costumer');
+        Route::patch('/costumer', [RegisterCostumer::class, 'update'])->name('update.costumer');
     });
 });
 

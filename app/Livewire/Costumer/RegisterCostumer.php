@@ -10,4 +10,8 @@ class RegisterCostumer extends Component
     {
         return view('livewire.costumer.form');
     }
+    public function update()
+    {
+        return view('livewire.costumer.update');
+    }
 }
